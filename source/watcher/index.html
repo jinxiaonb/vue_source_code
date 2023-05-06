@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watcher</title>
+</head>
+
+<body>
+    <div id="root">
+        <div class="c1">
+            <div class="tt1" id="di">{{ name }}</div>
+            <div class="tt2">{{ age }}</div>
+            <div class="tt3">{{ gender }}</div>
+            <div>{{ obj.test }}</div>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </div>
+    </div>
+    <script src="./src/watcher.js"></script>
+    <script src="./src/Dep.js"></script>
+    <script src="./src/vnode.js"></script>
+    <script src="./src/compiler.js"></script>
+    <script src="./src/jgvue.js"></script>
+    <script src="./src/initrender.js"></script>
+    <script src="./src/initData.js"></script>
+    <script>
+        // rollup
+        let app = new JGVue({
+            el: '#root',
+            data: {
+                name: '张三',
+                age: 40,
+                gender: '男',
+                obj: {
+                    test: "dfsak"
+                },
+                children: [{
+                        name1: '张小一',
+                        age1: 9,
+                        gender1: '男'
+                    },
+                    {
+                        name1: '张小二',
+                        age1: 6,
+                        gender1: '女'
+                    },
+                    {
+                        name1: '张小三',
+                        age1: 3,
+                        gender1: '男'
+                    },
+                ],
+                a: {
+                    b: {
+                        c: 'jim'
+                    }
+                }
+            },
+
+            computed: {
+                // 计算属性也是响应式的 ( watcher )
+            },
+
+            watch: {
+                // 监听什么属性, 这个属性是支持路径语法
+                // 也是使用 watcher 实现
+                // 'a.b.c': ( oldV, newV ) {  }
+            }
+
+        });
+    </script>
+</body>
+
+</html>
